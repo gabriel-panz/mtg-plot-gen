@@ -2,6 +2,8 @@
 import { CardProps } from "@/components/ui/card";
 import { setTimeout } from "node:timers/promises";
 
+export const runtime = "edge";
+
 type PlotItem = {
     description: string;
     query: string;
