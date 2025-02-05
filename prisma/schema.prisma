@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model cards {
+  id            Int             @id @default(autoincrement())
+  scryfall_id   String          @unique(map: "sqlite_autoindex_cards_1")
+  lang          String
+  img_id        String
+  categoryIndex categoryIndex[]
+}
+
+model categoryIndex {
+  id      Int    @id @default(autoincrement())
+  name    String
+  card_id Int?
+  cards   cards? @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "category_IDX_1")
+}

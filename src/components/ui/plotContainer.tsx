@@ -11,6 +11,11 @@ export interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
     type: CardListTypes
 }
 
+const toProperNoun = (s: string): string => {
+    let firstChar = s[0]
+    return firstChar.toUpperCase() + s.slice(1)
+}
+
 const CardContainer = ({ type, ...props }: CardContainerProps) => {
     const typedCardListAction = GenerateCardList.bind(null, type);
 
@@ -30,7 +35,7 @@ const CardContainer = ({ type, ...props }: CardContainerProps) => {
                     </Button>
                     :
                     <Button type="submit">
-                        Generate Plot
+                        Generate {toProperNoun(type)}
                     </Button>
                 }
             </form>

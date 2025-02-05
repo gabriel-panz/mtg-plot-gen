@@ -39,17 +39,6 @@ function CardHeader({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
     )
 }
 
-function CardTitle({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-    return (
-        <div
-            className={cn(
-                "text-2xl font-semibold leading-none tracking-tight",
-                className
-            )}
-            {...props}
-        />
-    )
-}
 
 function CardDescription({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
     return (
@@ -63,15 +52,6 @@ function CardDescription({ className, ...props }: HTMLAttributes<HTMLDivElement>
 function CardContent({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
     return (
         <div className={cn("p-6 pt-0", className)} {...props} />
-    )
-}
-
-function CardFooter({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-    return (
-        <div
-            className={cn("flex items-center p-6 pt-0", className)}
-            {...props}
-        />
     )
 }
 
