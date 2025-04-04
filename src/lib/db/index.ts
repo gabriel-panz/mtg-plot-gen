@@ -1,18 +1,20 @@
-import { PrismaClient } from '@prisma/client'
 
-declare global {
-    var prisma: PrismaClient
+import { getRequestContext } from "@cloudflare/next-on-pages"
+
+export const runtime = 'edge';
+
+export async function QueryMany<T>(q: string, ...params: unknown[]) {
+	const { env } = getRequestContext();
+	const stmt = env.DB.prepare(q);
+	stmt.bind(...params);
+	const res = await stmt.run();
+
+	if (!res.success) {
+		throw new Error("error getting results from D1 database", {
+			cause: res.error
+		});
+	}
+
+	return res.results as T[];
 }
 
-let prisma: PrismaClient;
-
-if (process.env.NODE_ENV === 'production') {
-    prisma = new PrismaClient();
-} else {
-    if (!global.prisma) {
-        global.prisma = new PrismaClient();
-    }
-    prisma = global.prisma;
-}
-
-export default prisma;

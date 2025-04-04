@@ -1,4 +1,3 @@
-'use client'
 import CardContainer from "@/components/ui/plotContainer";
 
 export default function Home() {
