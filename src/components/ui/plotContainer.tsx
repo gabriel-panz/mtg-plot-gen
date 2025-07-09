@@ -7,9 +7,6 @@ import { Download, Loader2 } from "lucide-react"
 import { useReactToPrint } from "react-to-print"
 import Printable from "../exports/printable"
 import { CardListTypes } from "@/lib/types"
-import { NextRequest } from "next/server"
-
-export const runtime = 'edge';
 
 export interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
 	type: CardListTypes
@@ -21,7 +18,7 @@ const toProperNoun = (s: string): string => {
 }
 
 const CardContainer = ({ type }: CardContainerProps) => {
-	const callServer = async (state: any[], formData: FormData) => {
+	const callServer = async (state: any[], _formData: FormData) => {
 		return await fetch(`/api/${type}`).then(async res => {
 			return await res.json() as any[];
 		}).catch(err => { console.log(err); return state; });

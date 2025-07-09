@@ -2,8 +2,6 @@ import { CardProps } from "@/components/ui/card";
 import { QueryMany } from "@/lib/db";
 import { CardListTypes } from "@/lib/types";
 
-export const runtime = 'edge';
-
 type QueryItem = {
 	key: string;
 	description: string;
@@ -53,7 +51,7 @@ async function getCard(p: QueryItem): Promise<CardProps> {
 	SELECT * FROM cards
 	WHERE id IN (
 	   SELECT card_id FROM categoryIndex
-	   WHERE name = '?'
+	   WHERE name = ?
 	   ORDER BY RANDOM() LIMIT 1
 	);`
 
