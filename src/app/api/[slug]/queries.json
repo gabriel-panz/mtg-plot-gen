@@ -1,0 +1,88 @@
+{
+	"plot": [
+		{
+			"details": "A location where the story is set.This could be the beginning area, the entire realm, etc.",
+			"key": "location",
+			"description": "The Location"
+		},
+		{
+			"details": "Where the main content of the story is set. This could be your Castle, an actual dungeon, it could be just the final portion of the story, the very beginning or even a sidetrack.",
+			"key": "dungeon",
+			"description": "The Dungeon"
+		},
+		{
+			"details": " This is the item the villain needs, the main characters want or the doomsday device that could obliterate all life as we know it.It's the One Ring, or the Stargate.",
+			"key": "macguffin",
+			"description": "The MacGuffin"
+		},
+		{
+			"details": "Pretty self-explanatory. But it doesn't need to be a villain. It could be a well intentioned person who's opposed to the main characters somehow.It wants to kill them, stop them, or win against them in race.",
+			"key": "antagonist",
+			"description": "The Antagonist"
+		},
+		{
+			"details": "A friendly NPC, someone to introduce the story, or to move it along. Could be the main characters' saviour in a time of need, or a friend in distress to be saved.",
+			"key": "companion",
+			"description": "A Companion"
+		},
+		{
+			"details": "Helps keep your story interesting. Try putting this one in the least expected place. Interpret this as an additional challenge to surprise your players whenever they think things are getting too dull, or too easy, or just when they thought everything was starting to go a little too well.",
+			"key": "twist",
+			"description": "A Twist"
+		},
+		{
+			"details": "Personally I love a special ability to spice up a final encounter. Try reading the flavor, converting the rules to your TTRPG.",
+			"key": "final_boss_ability",
+			"description": "The Final Boss' Ability"
+		},
+		{
+			"details": "These are the stakes. If the players don't stop the villain, what happens? Or maybe, what happens if they do manage to stop them? Could be either a reward or a punishment.",
+			"key": "consequence",
+			"description": "A Consequence for Failure/Success"
+		},
+		{
+			"details": "This is a powerful magic item or weapon. It'll help the players in their journey. Maybe they find it at the end of the dungeon, or maybe it's been with them all along.",
+			"key": "vorpal",
+			"description": "The Vorpal"
+		}
+	],
+	"encounter": [
+		{
+			"details": "Use this creature in an encounter, yuou players may have to fight it, beat it in a dance fight or just escape it.",
+			"key": "creature",
+			"description": "Creature"
+		},
+		{
+			"details": "Use this creature in an encounter, yuou players may have to fight it, beat it in a dance fight or just escape it.",
+			"key": "creature",
+			"description": "Creature"
+		},
+		{
+			"details": "Imagine this as the spice for your encounter, it's what could transform a basic creature in something unique. It's the  creatures' primary ability, or a special weapon they possess. Maybe the villain provided them with a magical curse.",
+			"key": "special_ability",
+			"description": "Special Ability/Event"
+		},
+		{
+			"details": "This is some form of terrain/ambient modifier. Use this to make your encounter more dynamic. Not something that particularly works agains the players, but it makes the whole situation more chaotic and unpredictable. Like a sandstorm, a wild magic field, or a stampede of elefants. ",
+			"key": "enchantment",
+			"description": "Enchantment/Ambient Modifier"
+		}
+	],
+	"loot": [
+		{
+			"details": "A reward for your players. Be sure to make this fun!",
+			"key": "loot",
+			"description": "Loot"
+		},
+		{
+			"details": "A reward for your players. Be sure to make this fun!",
+			"key": "loot",
+			"description": "Loot"
+		},
+		{
+			"details": "A BIG reward for your players. Be sure to make this fun!",
+			"key": "strong_loot",
+			"description": "Strong Loot"
+		}
+	]
+}

@@ -1,38 +1,18 @@
 import { CardProps } from "@/components/ui/card";
 import { QueryMany } from "@/lib/db";
 import { CardListTypes } from "@/lib/types";
+import * as queries from './queries.json'
 
 type QueryItem = {
 	key: string;
-	description: string;
 }
 
-const queries: { [key: string]: QueryItem[] } = {
-	plot: [
-		{ key: 'location', description: 'The Location' },
-		{ key: 'dungeon', description: 'The Dungeon' },
-		{ key: 'macguffin', description: 'The MacGuffin' },
-		{ key: 'antagonist', description: 'The Antagonist' },
-		{ key: 'companion', description: 'A Companion' },
-		{ key: 'twist', description: 'A Twist' },
-		{ key: 'final_boss_ability', description: 'The Final Boss\' Ability' },
-		{ key: 'consequence', description: 'A Consequence for Failure/Success' },
-		{ key: 'vorpal', description: 'The Vorpal (a legendary item to power up the party)' },
-	],
-	encounter: [
-		{ key: 'creature', description: 'Creature' },
-		{ key: 'creature', description: 'Creature' },
-		{ key: 'special_ability', description: 'Special Ability/Event' },
-		{ key: 'enchantment', description: 'Enchantment/Ambient Modifier' },
-	],
-	loot: [
-		{ key: 'loot', description: 'Loot' },
-		{ key: 'loot', description: 'Loot' },
-		{ key: 'strong_loot', description: 'Strong Loot' },
-	],
+export type Card = {
+	card_key: string,
+	imageUrl: string
 }
 
-export async function GenerateCardList(type: CardListTypes): Promise<CardProps[]> {
+export async function GenerateCardList(type: CardListTypes): Promise<Card[]> {
 	const qs = queries[type];
 	if (!qs)
 		throw new Error('cannot generate given type');
@@ -46,7 +26,7 @@ export async function GenerateCardList(type: CardListTypes): Promise<CardProps[]
 	return cards;
 }
 
-async function getCard(p: QueryItem): Promise<CardProps> {
+async function getCard(p: QueryItem): Promise<Card> {
 	const q = `
 	SELECT * FROM cards
 	WHERE id IN (
@@ -58,20 +38,19 @@ async function getCard(p: QueryItem): Promise<CardProps> {
 	const result = await QueryMany<dbCards>(q, p.key);
 
 	if (!result.length) return {
-		cardTitle: 'not found',
+		card_key: p.key,
 		imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500',
-		description: p.description
 	}
 
 	return {
-		cardTitle: result[0].scryfall_id,
+		card_key: p.key,
 		imageUrl: result[0].img_id,
-		description: p.description
 	};
 }
 
 type dbCards = {
+	id: number,
+	lang: string,
 	scryfall_id: string,
 	img_id: string,
-	description: string
 }
