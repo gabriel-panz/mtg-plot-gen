@@ -8,19 +8,24 @@ import { useReactToPrint } from "react-to-print"
 import Printable from "../exports/printable"
 import { CardListTypes } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { Dict } from "@/lib/i18n"
-import { Card as CardType } from "@/app/api/[slug]/internal"
+import { Card as CardType } from "@/app/[lang]/api/[slug]/internal"
 
 export interface CardContainerProps extends HTMLAttributes<HTMLDivElement> {
 	type: CardListTypes,
-	dict: Dict
+	dict: {
+		drawLoot: string,
+		drawEncounter: string,
+		drawPlot: string,
+		of: string,
+		pleaseWait: string
+	}
 }
 
-const CardContainer = ({ className, dict, type, ...params }: CardContainerProps) => {
+const CardContainer = ({ className, lang, dict, type, ...params }: CardContainerProps) => {
 	const callServer = async (state: any[], _formData: FormData) => {
-		return await fetch(`/api/${type}`).then(async res => {
+		return await fetch(`${lang}/api/${type}`).then(async res => {
 			return await res.json() as CardType[];
-		}).catch(err => { console.log(err); return state; });
+		}).catch(err => { console.error(err); return state; });
 	}
 
 	const [cardItems, cardAction, cardPending] = useActionState<CardType[], FormData>(callServer, []);
@@ -77,9 +82,6 @@ const CardContainer = ({ className, dict, type, ...params }: CardContainerProps)
 									<CarouselItem key={index}>
 										<div className="p-1">
 											<Card {...c}
-												type={type}
-												description={dict.cardTranslations[type][c.card_key].description}
-												details={dict.cardTranslations[type][c.card_key].details}
 												currentIndex={`${index + 1} ${dict.of} ${cardItems.length}`}
 											/>
 										</div>
@@ -95,11 +97,7 @@ const CardContainer = ({ className, dict, type, ...params }: CardContainerProps)
 				{
 					...cardItems.map((c, index) => (
 						<div className="break-inside-avoid w-1/2" key={index}>
-							<Card {...c}
-								type={type}
-								description={dict.cardTranslations[type][c.card_key].description}
-								details={dict.cardTranslations[type][c.card_key].details}
-							/>
+							<Card {...c} />
 						</div>
 					))
 				}

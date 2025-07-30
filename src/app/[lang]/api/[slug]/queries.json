@@ -1,0 +1,56 @@
+{
+	"plot": [
+		{
+			"key": "location"
+		},
+		{
+			"key": "dungeon"
+		},
+		{
+			"key": "macguffin"
+		},
+		{
+			"key": "antagonist"
+		},
+		{
+			"key": "companion"
+		},
+		{
+			"key": "twist"
+		},
+		{
+			"key": "final_boss_ability"
+		},
+		{
+			"key": "consequence"
+		},
+		{
+			"key": "vorpal"
+		}
+	],
+	"encounter": [
+		{
+			"key": "creature"
+		},
+		{
+			"key": "creature"
+		},
+		{
+			"key": "special_ability"
+		},
+		{
+			"key": "enchantment"
+		}
+	],
+	"loot": [
+		{
+			"key": "loot"
+		},
+		{
+			"key": "loot"
+		},
+		{
+			"key": "strong_loot"
+		}
+	]
+}

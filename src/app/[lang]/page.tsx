@@ -8,15 +8,23 @@ export default async function Home({
 }: { params: Promise<{ lang: string }> }) {
 	const { lang } = await params;
 	const dict = await getDictionary(lang);
+	const CardContainerDict = {
+		drawLoot: dict.drawLoot,
+		drawEncounter: dict.drawEncounter,
+		drawPlot: dict.drawPlot,
+		of: dict.of,
+		pleaseWait: dict.pleaseWait
+	}
+
 	return (
 		<>
 			<section className="flex flex-col items-center justify-center min-h-dvh">
 				<h1 className="mb-2"> Magic Inspiration </h1>
 				<h4 className="mb-4">{dict.subtitle}</h4>
 				<main className="text-center py-6 min-h-2/5 justify-between flex content-between flex-col">
-					<CardContainer dict={dict} className="mb-1" type="plot" />
-					<CardContainer dict={dict} className="mb-1" type="encounter" />
-					<CardContainer dict={dict} type="loot" />
+					<CardContainer lang={lang} dict={CardContainerDict} className="mb-1" type="plot" />
+					<CardContainer lang={lang} dict={CardContainerDict} className="mb-1" type="encounter" />
+					<CardContainer lang={lang} dict={CardContainerDict} type="loot" />
 				</main>
 			</section>
 			<section className="flex flex-col text-justify">

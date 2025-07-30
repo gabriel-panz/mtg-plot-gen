@@ -4,11 +4,11 @@ import { CardListTypes } from "@/lib/types";
 
 export async function GET(
 	_req: NextRequest,
-	{ params }: { params: Promise<{ slug: string }> }
+	{ params }: { params: Promise<{ lang: string, slug: string }> }
 ) {
-	const { slug } = await params;
+	const { slug, lang } = await params;
 
-	const list = await GenerateCardList((slug as CardListTypes));
+	const list = await GenerateCardList((slug as CardListTypes), lang);
 
 	return NextResponse.json(list);
 }

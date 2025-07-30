@@ -21,7 +21,6 @@ export async function middleware(req: NextRequest) {
 	if (pathnameHasLocale) return;
 
 	const locale = getLocale(req);
-	console.log('locale', locale);
 	req.nextUrl.pathname = `/${locale}${pathname}`;
 
 	return NextResponse.redirect(req.nextUrl)
@@ -30,6 +29,6 @@ export async function middleware(req: NextRequest) {
 export const config = {
 	matcher: [
 		// Skip all internal paths (_next)
-		'/((?!_next|api).*)',
+		'/((?!_next).*)',
 	],
 }

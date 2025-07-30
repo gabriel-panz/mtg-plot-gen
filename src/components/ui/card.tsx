@@ -3,10 +3,8 @@ import { cn } from "@/lib/utils"
 import { forwardRef, HTMLAttributes, useState } from "react"
 import Image from "next/image";
 import { HelpCircle } from "lucide-react";
-import { CardListTypes } from "@/lib/types";
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-	type: CardListTypes,
 	imageUrl: string;
 	details: string;
 	description: string;
@@ -14,7 +12,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-	function Card({ description, imageUrl, className, type, currentIndex, ...props }, ref) {
+	function Card({ description, imageUrl, className, currentIndex, ...props }, ref) {
 		const [details, setDetails] = useState(false);
 		return (
 			<>
